@@ -13,18 +13,18 @@ public class Rq {
     }
 
     public String getParam(String name, String defaultValue) {
-        if (cmd.equals("등록?이름=홍길동&고향=남원") && name.equals("이름")) return "홍길동";
-        if (cmd.equals("등록?이름=홍길동&고향=남원") && name.equals("고향")) return "남원";
-
         String queryString = cmd.split("\\?", 2)[1];
 
-        String[] paramBits = queryString.split("=", 2);
+        String[] queryStringBits = queryString.split("&");
 
-        String paramName = paramBits[0];
-        String paramValue = paramBits[1];
+        for (String paramStr : queryStringBits) {
+            String[] paramStrBits = paramStr.split("=", 2);
+            String paramName = paramStrBits[0];
+            String paramValue = paramStrBits[1];
 
-        if (!name.equals(paramName)) return defaultValue;
+            if (paramName.equals(name)) return paramValue;
+        }
 
-        return paramValue;
+        return defaultValue;
     }
 }
