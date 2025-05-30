@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RqTest {
     @Test
-    @DisplayName("rq.getActionName(\"수정?id=1\")")
+    @DisplayName("\"수정?id=1\" : rq.getActionName()")
     void t1() {
         Rq rq = new Rq("수정?id=1");
 
@@ -17,12 +17,22 @@ public class RqTest {
     }
 
     @Test
-    @DisplayName("rq.getActionName(\"삭제?id=1\")")
+    @DisplayName("\"삭제?id=1\" : rq.getActionName()")
     void t2() {
         Rq rq = new Rq("삭제?id=1");
 
         String actionName = rq.getActionName();
 
         assertEquals("삭제", actionName);
+    }
+
+    @Test
+    @DisplayName("\"등록?이름=홍길동\" : rq.getActionName()")
+    void t3() {
+        Rq rq = new Rq("등록?이름=홍길동");
+
+        String name = rq.getParam("이름", "");
+
+        assertEquals("홍길동", name);
     }
 }
