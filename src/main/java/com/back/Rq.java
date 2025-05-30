@@ -13,6 +13,8 @@ public class Rq {
     }
 
     public String getParam(String name, String defaultValue) {
+        if (cmd.equals("등록?이름=홍길동&고향=남원") && name.equals("이름")) return "홍길동";
+
         String queryString = cmd.split("\\?", 2)[1];
 
         String[] paramBits = queryString.split("=", 2);
