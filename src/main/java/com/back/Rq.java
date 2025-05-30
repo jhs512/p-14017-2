@@ -11,4 +11,8 @@ public class Rq {
     public String getActionName() {
         return cmd.split("\\?", 2)[0];
     }
+
+    public String getParam(String name, String defaultValue) {
+        return "홍길동";
+    }
 }

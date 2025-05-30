@@ -27,7 +27,7 @@ public class RqTest {
     }
 
     @Test
-    @DisplayName("\"등록?이름=홍길동\" : rq.getActionName()")
+    @DisplayName("\"등록?이름=홍길동\" : rq.getParam(\"이름\", \"\")")
     void t3() {
         Rq rq = new Rq("등록?이름=홍길동");
 
